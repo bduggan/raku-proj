@@ -1,0 +1,18 @@
+use Proj::Native;
+use Test;
+
+my $ctx = proj_context_create;
+my $p = proj_info($ctx);
+
+diag 'major ' ~ $p.major.raku;
+diag 'minor ' ~ $p.minor.raku;
+diag 'patch ' ~ $p.patch.raku;
+diag 'release ' ~ $p.release.raku;
+diag 'version ' ~ $p.version.raku;
+diag 'searchpath ' ~ $p.searchpath.raku;
+diag 'path count ' ~ $p.path_count.raku;
+
+ok $p.major > 4, 'major version > 4';
+
+done-testing;
+
