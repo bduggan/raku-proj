@@ -1,0 +1,19 @@
+use Proj::Native;
+use Test;
+
+plan 8;
+
+my $ctx = proj_context_create;
+
+my $coord = proj_coord($ctx, 12.0e0, 55.0e0, 0.0e0, 0.0e0);
+
+is $coord.xyzt.x, 12.0e0, "x";
+is $coord.xyzt.y, 55.0e0, "y";
+is $coord.xyzt.z, 0.0e0, "z";
+is $coord.xyzt.t, 0.0e0, "t";
+
+is $coord.enu.e, 12.0e0, "e";
+is $coord.xy.x, 12.0e0, "x";
+is $coord.xy.y, 55.0e0, "y";
+is $coord.xyz.x, 12.0e0, "x";
+
