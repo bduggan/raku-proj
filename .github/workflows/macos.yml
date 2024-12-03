@@ -24,6 +24,10 @@ jobs:
           raku-version: ${{ matrix.raku-version }}
       - name: install native dependencies
         run: brew install proj
+      - name: Set DYLD_LIBRARY_PATH
+        run: |
+            PROJ_PATH=$(brew --prefix proj)
+            echo "DYLD_LIBRARY_PATH=${PROJ_PATH}/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
       - name: Install Dependencies
         run: zef install --deps-only .
       - name: Run Tests
