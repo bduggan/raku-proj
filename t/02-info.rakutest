@@ -4,6 +4,8 @@ use Test;
 my $ctx = proj_context_create;
 my $p = proj_info($ctx);
 
+ok $p.major == 9, 'major version is 9';
+ok $p.minor == 4, 'minor version is 4';
 diag 'major ' ~ $p.major.raku;
 diag 'minor ' ~ $p.minor.raku;
 diag 'patch ' ~ $p.patch.raku;
