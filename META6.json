@@ -1,0 +1,23 @@
+{
+  "name" : "Proj",
+  "authors" : [
+    "Brian Duggan"
+  ],
+  "provides" : {
+    "Proj" : "lib/Proj.rakumod",
+    "Proj::Native" : "lib/Proj/Native.rakumod"
+  },
+  "build-depends" : [ ],
+  "depends" : [
+  ],
+  "description" : "Raku bindings for the Proj library",
+  "tags" : [
+    "geo"
+  ],
+  "license" : "MIT",
+  "raku" : "6.*",
+  "version" : "0.0.1",
+  "auth" : "zef:bduggan",
+  "source-url" : "git://github.com/bduggan/raku-proj.git"
+}
+
