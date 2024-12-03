@@ -22,6 +22,8 @@ jobs:
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
+      - name: install native dependencies
+        run: brew install proj
       - name: Install Dependencies
         run: zef install --deps-only .
       - name: Run Tests
