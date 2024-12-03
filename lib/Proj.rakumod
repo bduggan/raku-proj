@@ -6,15 +6,5 @@ unit module Proj;
 
 Proj - Raku bindings for the Proj library for geospatial transformations
 
-=head1 SYNOPSIS
-
-=begin code
-
-use Proj::Native;
-
-
-=end code
-
-
-1;
+=end pod
 

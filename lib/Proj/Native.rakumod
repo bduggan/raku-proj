@@ -1,7 +1,9 @@
 use NativeCall;
 
+constant PROJ = 'proj';
+
 class PJContext is repr('CPointer') { }
-sub proj_context_create() returns PJContext is native('proj') is export { * }
+sub proj_context_create() returns PJContext is native(PROJ) is export { * }
 
 class PJInfo is repr('CStruct') {
   has int32 $.major;
@@ -14,7 +16,7 @@ class PJInfo is repr('CStruct') {
   has size_t $.path_count;
 }
 
-sub proj_info( PJContext ) returns PJInfo is native('proj') is export { * }
+sub proj_info( PJContext ) returns PJInfo is native(PROJ) is export { * }
 
 class PJ_XYZT is repr('CStruct') { has num64 $.x; has num64 $.y; has num64 $.z; has num64 $.t; }
 class PJ_UVWT is repr('CStruct') { has num64 $.u; has num64 $.v; has num64 $.w; has num64 $.t; }
@@ -53,4 +55,14 @@ class PJCoord is repr('CUnion') {
   HAS PJ_LP $.lp;
 }
 
-sub proj_coord(PJContext, num64, num64, num64, num64) returns PJCoord is native('proj') is export { * }
+class PJ is repr('CPointer') { }
+class PJArea is repr('CPointer') { }
+
+sub proj_coord(PJContext, num64, num64, num64, num64) returns PJCoord is native(PROJ) is export { * }
+sub proj_context_destroy(PJContext) is native(PROJ) is export { * }
+sub proj_create(PJContext, Str) returns PJ is native(PROJ) is export { * }
+sub proj_destroy(PJ) is native(PROJ) is export { * }
+sub proj_trans(PJContext, PJ, int32, PJCoord) returns PJCoord is native(PROJ) is export { * }
+
+sub proj_crs_get_geodetic_crs(PJContext, PJ) returns PJ is native(PROJ) is export { * }
+sub proj_create_crs_to_crs_from_pj(PJContext, PJ, PJ, PJArea, CArray[Str]) returns PJ is native(PROJ) is export { * }
