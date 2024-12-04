@@ -1,6 +1,8 @@
 use Proj::Native;
 use Test;
 
+plan 5;
+
 my $ctx = proj_context_create;
 my $p = proj_info($ctx);
 
@@ -18,6 +20,4 @@ diag 'searchpath ' ~ $p.searchpath.raku;
 diag 'path count ' ~ $p.path_count.raku;
 
 ok $p.major > 4, 'major version > 4';
-
-done-testing;
 
