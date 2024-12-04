@@ -26,8 +26,7 @@ jobs:
         run: ./install_deps.sh
       - name: Set DYLD_LIBRARY_PATH
         run: |
-            PROJ_PATH=$(pwd)
-            echo "DYLD_LIBRARY_PATH=${PROJ_PATH}/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
+            echo "DYLD_LIBRARY_PATH=/usr/local/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
       - name: Install Dependencies
         run: zef install --deps-only .
       - name: Run Tests
