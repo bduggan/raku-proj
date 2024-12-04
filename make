@@ -17,12 +17,7 @@ my $badges = qq:to/MD/;
  MD
 
 multi MAIN('test', Bool :$v) {
-  my $env = '';
-  if $*DISTRO ~~ /macos/ {
-    $env ~= 'DYLD_LIBRARY_PATH=. ';
-  }
-
-  shell "$env TEST_AUTHOR=1 prove {$v ?? '-v' !! ''} -e 'raku {$v ?? '--ll-exception' !! ''} -Ilib' t/*.rakutest";
+  shell "TEST_AUTHOR=1 prove {$v ?? '-v' !! ''} -e 'raku {$v ?? '--ll-exception' !! ''} -Ilib' t/*.rakutest";
 }
 
 multi MAIN('dist') {
