@@ -1,10 +1,18 @@
 use Proj::Native;
 use Test;
 
-my $ctx = proj_context_create;
-my $p = proj_info($ctx);
+plan 8;
 
-#ok $p.major == 9, 'major version is 9';
+my $ctx = proj_context_create;
+ok $ctx.defined, 'context created';
+
+my $p = proj_info($ctx);
+ok $p.defined, 'proj_info returned something';
+
+ok $p.major.defined, 'major version is ' ~ $p.major;
+ok $p.minor.defined, 'minor version is ' ~ $p.minor;
+ok $p.patch.defined, 'patch version is ' ~ $p.patch;
+ok $p.release, 'release is ' ~ $p.release.raku;
 #ok $p.minor == 4, 'minor version is 4';
 diag 'major ' ~ $p.major.raku;
 diag 'minor ' ~ $p.minor.raku;
@@ -15,6 +23,4 @@ diag 'searchpath ' ~ $p.searchpath.raku;
 diag 'path count ' ~ $p.path_count.raku;
 
 ok $p.major > 4, 'major version > 4';
-
-done-testing;
 
