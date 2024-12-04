@@ -23,6 +23,8 @@ jobs:
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
+      - name: install packages
+        run: sudo apt-get install -y curl
       - name: Install native deps
         run: ./install_deps.sh
       - name: Install Dependencies
