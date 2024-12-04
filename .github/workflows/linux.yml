@@ -24,10 +24,10 @@ jobs:
         with:
           raku-version: ${{ matrix.raku-version }}
       - name: install packages
-        run: sudo apt-get install -y curl
+        run: sudo apt-get install -y curl libcurl4-gnutls-dev 
       - name: Install native deps
         run: ./install_deps.sh
       - name: Install Dependencies
         run: zef install --deps-only .
       - name: Run Tests
-        run: zef test -v .
+        run: LD_LIBRARY_PATH=/usr/local/lib zef test -v .
