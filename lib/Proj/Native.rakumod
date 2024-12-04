@@ -16,7 +16,7 @@ class PJInfo is repr('CStruct') {
   has size_t $.path_count;
 }
 
-sub proj_info() returns PJInfo is native(PROJ) is export { * }
+sub proj_info( PJContext ) returns PJInfo is native(PROJ) is export { * }
 
 class PJ_XYZT is repr('CStruct') { has num64 $.x; has num64 $.y; has num64 $.z; has num64 $.t; }
 class PJ_UVWT is repr('CStruct') { has num64 $.u; has num64 $.v; has num64 $.w; has num64 $.t; }

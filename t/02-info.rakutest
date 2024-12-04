@@ -6,8 +6,7 @@ plan 8;
 my $ctx = proj_context_create;
 ok $ctx.defined, 'context created';
 
-#my $p = proj_info($ctx);
-my $p = proj_info;
+my $p = proj_info($ctx);
 ok $p.defined, 'proj_info returned something';
 
 ok $p.major.defined, 'major version is ' ~ $p.major;
